@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : SimpleDisplay 
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20120611
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Facebook Manager | Status Updates</title>
+<link href="http://fonts.googleapis.com/css?family=Arvo" rel="stylesheet" type="text/css" />
+<link href="../stylesheets/style.css" rel="stylesheet" type="text/css" media="screen" />
+<script type="../text/javascript" src="jquery/jquery-1.4.2.min.js"></script>
+<script type="../text/javascript" src="jquery/jquery.gallerax-0.2.js"></script>
+<style type="../text/css">
+@import "gallery.css";
+</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<div id="header">
+		<div id="logo">
+			<h1><img src="../images/facebook-funky.jpg" alt="" width="120" height="120" />manager<a href="#"></a></h1>
+		</div>
+	</div>
+	<!-- end #header -->
+	<div id="menu">
+		<ul>
+			<li class="current_page_item" ><a href="https://www.facebook.com/{{userid}}" target="_blank">{{ name }}</a></li>
+			<li><a href="../status.html/">Status Updates</a></li>
+			<li><a href="../photos.html/">Photos</a></li>
+			<li><a href="../checkIn.html/">Places</a></li>
+			<li ><a href="../sharedLinks.html/">Shared Links</a></li>
+			<li class="last"><a href="../logout.html/">Logout</a></li>
+		</ul>
+	</div>
+	
+	<div id="page">
+		<div id="page-bgtop">
+			<div id="page-bgbtm">
+				<div id="content">
+					<div id="welcome">
+						<center><h2 class="title">STATUS-UPDATES</h2></center>
+						<div class="entry">
+
+							{% for object in data %}
+								{% if object["type"] == "status" %}	
+									{% if object["message"] is defined %}
+										
+										<font size="4" color="#000080"><text><strong>{{ object["from"]["name"] }}</strong></text></font>
+										</br>
+										<font size="3" color="black"><text>{{ object["message"] }}</text></font>
+										</br>
+										<font size="4" color="#black"><text><strong><font size="3" color="#58D3F7">{{ object["likes"]|length }}&nbsp likes</font></strong></text></font> 
+										</br>
+										</br>
+									{% endif %}
+								{% endif %}
+							{% endfor %}	
+
+						</div>
+					</div>
+				</div>
+				
+				<div style="clear: both;">&nbsp;</div>
+			</div>
+		</div>
+	</div>
+	<!-- end #page --> 
+</div>
+
+<div id="footer">
+	<p> Have you ever found Facebook news feeds difficult to manage? When you want to search for a particular status update that your friend has posted or a link of an article somebody shared that you liked and now after a few hours when you go back to check it you don’t see it anymore? This can become a bit annoying and a complete waste of time when you have to search through to all those new feeds looking for it. This is when FACEBOOK MANAGER comes into the picture. Basically our application provides a systematic segregation of the user’s news feeds. The status updates that are posted by the user’s friends, the photos that they have uploaded, the various links to articles videos or images that they have shared and the places that they have checked into are all systematically segregated and displayed.  Facebook Manager makes it easy to search and manage the latest updates that the user has. It also provides hyperlink to the actual post on fb incase a user wants to a detailed view of a particular post</p>
+	</br>
+	<p>Copyright (c) 2013 facebook-manager.appspot.com All rights reserved. Design by Shrutika Dasgupta & Pooja Jain</p>
+</div>
+<!-- end #footer -->
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : SimpleDisplay 
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20120611
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Facebook Manager | Login </title>
+<link href="http://fonts.googleapis.com/css?family=Arvo" rel="stylesheet" type="text/css" />
+<link href="stylesheets/style.css" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript" src="jquery/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="jquery/jquery.gallerax-0.2.js"></script>
+<style type="text/css">
+@import "gallery.css";
+</style>
+</head>
+<body>
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '595714180501607',
+    status     : true, // check login status
+    cookie     : true, // enable cookies to allow the server to access the session
+    xfbml      : true  // parse XFBML
+  });
+
+  // Here we subscribe to the auth.authResponseChange JavaScript event. This event is fired
+  // for any authentication related change, such as login, logout or session refresh. This means that
+  // whenever someone who was previously logged out tries to log in again, the correct case below 
+  // will be handled. 
+  FB.Event.subscribe('auth.authResponseChange', function(response) {
+    // Here we specify what we do with the response anytime this event occurs. 
+    if (response.status === 'not_authorized') 
+    {
+      FB.login();
+      // In this case, the person is logged into Facebook, but not into the app, so we call
+      // FB.login() to prompt them to do so. 
+      // In real-life usage, you wouldn't want to immediately prompt someone to login 
+      // like this, for two reasons:
+      // (1) JavaScript created popup windows are blocked by most browsers unless they 
+      // result from direct interaction from people using the app (such as a mouse click)
+      // (2) it is a bad experience to be continually prompted to login upon page load.
+      
+    } else if (response.status === 'connected')
+     {
+      // The response object is returned with a status field that lets the app know the current
+      // login status of the person. In this case, we're handling the situation where they 
+      // have logged in to the app.
+       var code = response.authResponse.accessToken;
+       window.location.replace("status.html/?code=" + code);
+    } else {
+      // In this case, the person is not logged into Facebook, so we call the login() 
+      // function to prompt them to do so. Note that at this stage there is no indication
+      // of whether they are logged into the app. If they aren't then they'll see the Login
+      // dialog right after they log in to Facebook. 
+      // The same caveats as above apply to the FB.login() call here.
+      FB.login();
+    }
+  });
+  };
+
+  // Load the SDK asynchronously
+  (function(d){
+   var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+   if (d.getElementById(id)) {return;}
+   js = d.createElement('script'); js.id = id; js.async = true;
+   js.src = "//connect.facebook.net/en_US/all.js";
+   ref.parentNode.insertBefore(js, ref);
+  }(document));
+
+</script>
+<div id="wrapper">
+	<div id="header">
+		<div id="logo">
+			<h1><img src="images/facebook-funky.jpg" alt="" width="120" height="120" />manager<a href="#"></a></h1>
+		</div>
+	</div>
+	<div id="welcome">
+		<center><h2 class="title"><a href="#">Please login using the facebook login button</a></h2></center>
+		<div class="entry">
+			<center><fb:login-button show-faces="true" width="300" max-rows="1" scope="read_stream"></fb:login-button></center>
+		</div>
+		
+	</div>
+
+</div>
+<div id="footer">
+	
+	<p> Have you ever found Facebook news feeds difficult to manage? When you want to search for a particular status update that your friend has posted or a link of an article somebody shared that you liked and now after a few hours when you go back to check it you don’t see it anymore? This can become a bit annoying and a complete waste of time when you have to search through to all those new feeds looking for it. This is when FACEBOOK MANAGER comes into the picture. Basically our application provides a systematic segregation of the user’s news feeds. The status updates that are posted by the user’s friends, the photos that they have uploaded, the various links to articles videos or images that they have shared and the places that they have checked into are all systematically segregated and displayed.  Facebook Manager makes it easy to search and manage the latest updates that the user has. It also provides hyperlink to the actual post on fb incase a user wants to a detailed view of a particular post</p>
+	</br>
+	<p>Copyright (c) 2013 facebook-manager.appspot.com All rights reserved. Design by Shrutika Dasgupta & Pooja Jain</p>
+</div>
+<!-- end #footer -->
+</body>
+</html>
